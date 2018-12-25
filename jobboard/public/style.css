@@ -21,7 +21,7 @@ ul {
 }
 
 header {
-  background-color: #303c49;
+  background-color: #2176ff;
   display: grid;
   grid-template-columns: 30% auto;
 }
@@ -47,7 +47,7 @@ nav ul li a {
   display: inline-block;
 }
 nav ul li a:hover {
-  background: #455668;
+  background: #377ff2;
 }
 .container {
   width: calc(100% - 4em);
