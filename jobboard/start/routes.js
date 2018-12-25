@@ -22,6 +22,7 @@ Route.on("/signup").render("auth.signup");
 Route.post("/signup", "UserController.create").validator("CreateUser");
 
 Route.on("/login").render("auth.login");
+Route.post("/login", "UserController.login").validator("LoginUser");
 
 Route.get("/logout", async ({ auth, response }) => {
   await auth.logout();
