@@ -1,7 +1,7 @@
 @layout('layouts.main')
 
 @section('title')
-Job Board - Post your Job
+Job Board - Edit your Job
 @endsection
 
 @section('extracss')
@@ -9,18 +9,18 @@ Job Board - Post your Job
 @endsection
 
 @section('content')
-  <h1>Post a Job</h1>
+  <h1>Edit Job</h1>
 
 
   <div class="job-container">
     @if(flashMessage('message'))
         <span>{{ flashMessage('message') }}</span>
     @endif
-        <form action="{{ route('JobController.create') }}" method="POST">
+        <form action="{{ route('JobController.update', { id: job.id }) }}" method="POST">
           {{ csrfField() }}
   
           <label for="title">Job Title</label>
-          <input type="text" name="title" value="{{ old('title', '') }}">
+          <input type="text" name="title" value="{{ job.title }}">
           @if(hasErrorFor('title'))
               <span>
                   {{ getErrorFor('title') }}
@@ -28,7 +28,7 @@ Job Board - Post your Job
           @endif
   
           <label for="link">Link URL</label>
-          <input type="text" name="link" value="{{ old('link', '') }}">
+          <input type="text" name="link" value="{{ job.link }}">
           @if(hasErrorFor('link'))
               <span>
                   {{ getErrorFor('link') }}
@@ -36,30 +36,14 @@ Job Board - Post your Job
           @endif
   
           <label for="description">Description</label>
-          <input type="text" name="description">
+          <input type="text" name="description" value="{{ job.description }}">
           @if(hasErrorFor('description'))
               <span>
                   {{ getErrorFor('description') }}
               </span>
           @endif
   
-          <button type="submit">Submit a Job</button>
+          <button type="submit">Update Job</button><br>
         </form>
     </div>
-
-<h2>My jobs</h2>
-
-  @each(job in jobs)
-  <div class="job-container2">
-    <div class="blank"></div>
-    <div class="job-info">
-      <h3><a href="{{ job.link }}">{{ job.title }}</a></h3>
-      <p>{{ job.description }}</p>
-      <ul>
-          <li><a href="{{ route('JobController.delete', { id: job.id }) }}">Delete</a></li>
-          <li><a href="{{ route('JobController.edit', { id: job.id }) }}">Edit</a></li>
-      </ul>
-    </div>
-  </div>
-  @endeach
 @endsection
