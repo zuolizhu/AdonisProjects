@@ -4,7 +4,7 @@ This is the web application using fullstack framework AdonisJs.
 
 Screenshot:
 
-
+![screenshot](https://github.com/zuolizhu/AdonisProjects/blob/master/jobboard/screenshots/screenshot.jpg)
 
 ## To run this project
 
